@@ -12,7 +12,11 @@ height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 fps = int(cap.get(cv2.CAP_PROP_FPS))
     
 
-ret , frame = cap.read()
+#phle codec banayenge kis basis pe compression karna hai hamei
+fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+out = cv2.VideoWriter("output.mp4",fourcc,fps,(width,height))
+
+
 
 while(True):
     start_time = time.time()
@@ -20,6 +24,10 @@ while(True):
     
     if not ret:
         break
+    
+    #ab rectangle draw karna hai ek frame pe
+    cv2.rectangle(frame, (x1,y1), (x2,y2), (0,255,0),2)
+    
     
     
     
